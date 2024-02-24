@@ -28,7 +28,7 @@
       <Suspense>
         <CityList />
         <template #fallback>
-          <CityCardSkeleton />
+          <AnimatedPreloader />
         </template>
       </Suspense>
     </div>
@@ -39,7 +39,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import CityList from "../components/CityList.vue";
-import CityCardSkeleton from "../components/CityCardPreloader.vue";
+import AnimatedPreloader from "../components/AnimatedPreloader.vue";
 import { getMapboxSearchResults } from "../service/apiService";
 
 const router = useRouter();
@@ -78,3 +78,4 @@ const getSearchResults = async () => {
   }, 300);
 };
 </script>
+

@@ -46,5 +46,4 @@ import SiteNavigation from './components/SiteNavigation.vue'
       background-position: 100% 50%;
     }
   }
-
 </style>

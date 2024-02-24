@@ -16,7 +16,7 @@
           </RouterLink> 
        
             <div class="flex gap-3 flex-1 justify-end">
-        <i class="fa-solid fa-circle-plus text-3xl text-red-400 hover:text-red-300 duration-150 cursor-pointer"
+        <i class="fa-solid fa-circle-plus text-2xl md:text-3xl lg:text-4xl text-red-400 hover:text-red-300 duration-150 cursor-pointer"
           @click="addCity"
           v-if="route.query.preview"
         ></i>
@@ -79,5 +79,22 @@ const addCity = () => {
   100% { color: whitesmoke; }
 }
 
+
+@media only screen and (max-width: 640px) {
+  .container {
+    padding: 0 10px; 
+  }
+  
+  .gap-16 {
+    gap: 24px;
+  }
+  
+  .icon {
+    font-size: 1.5rem; 
+  }
+  .items-center{
+    margin-top: 10px;
+  }
+}
 
 </style>

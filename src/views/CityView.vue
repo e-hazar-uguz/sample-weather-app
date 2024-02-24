@@ -5,7 +5,7 @@
         <AsyncCityView />
       </template>
       <template #fallback>
-        <CityViewSkeleton />
+        <AnimatedPreloader />
       </template>
     </Suspense> 
     </div>
@@ -13,5 +13,5 @@
 
 <script setup>
 import AsyncCityView from "../components/CityView.vue";
-import CityViewSkeleton from "../components/CityViewPreloader.vue";
+import AnimatedPreloader from "../components/AnimatedPreloader.vue";
 </script> 

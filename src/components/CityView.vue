@@ -3,13 +3,13 @@
     <div
     v-if="route.query.preview"
     class="text-white p-4 bg-red-400 w-full text-center">
-    <p>
+    <p class="infos">
       You are currently viewing this city, click the "+" icon to save this city.
     </p>
   </div>
     <!-- Weather Overview -->
     <div class="flex flex-col items-center text-blue-100 py-12">
-    <h1 class="text-4xl mb-2">{{ route.params.city }}</h1>
+    <h1 class="text-4xl  mb-2">{{ route.params.city }}</h1>
     <p class="text-sm mb-12">
       {{
         new Date(weatherData.currentTime).toLocaleDateString(
@@ -95,7 +95,7 @@
       <div
         v-for="day in weatherData.daily"
         :key="day.dt"
-        class="flex items-center">
+        class="flex items-center hazar">
 
         <p class="flex-1">
           {{
@@ -210,6 +210,56 @@ router.push({
 
 .overflow-x-scroll::-webkit-scrollbar-thumb {
   background: #888;
+}
+
+@media only screen and (max-width: 640px) {
+
+  .text-md {
+      font-size: 0.8rem;
+    }
+
+    .text-xl {
+    font-size: 1rem!important;
+  }
+
+  .flex.flex-col.gap-4.items-center img {
+    width: 35px; 
+    height: 35px;
+  }
+
+  .infos{
+    font-size:small
+  }
+
+  .flex-col h1{
+    font-size: x-large;
+  }
+
+  .flex-col .text-8xl {
+    font-size: 3.5rem;
+  }
+
+  .flex-col  .h-auto{
+    width: 100px; 
+    height: 100px;
+  }
+
+  .max-w-screen-md h2{
+    font-size: large;
+  }
+
+  .overflow-x-scroll::-webkit-scrollbar {
+  height: .6rem;
+}
+.hazar p{
+  font-size: small;
+}
+
+.hazar img{
+  width: 35px; 
+    height: 35px;
+}
+
 }
 
 </style>

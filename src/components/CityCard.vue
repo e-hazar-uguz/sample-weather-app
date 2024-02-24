@@ -32,3 +32,16 @@ defineProps({
   },
 });
 </script>
+
+<style>
+@media only screen and (max-width: 640px) {
+  .flex-1 h2 {
+    font-size: 1.5rem;
+  }
+  
+  .flex-1 h3 {
+    font-size: .9rem; 
+  }
+}
+
+</style>
