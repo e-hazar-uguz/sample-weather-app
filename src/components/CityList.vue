@@ -2,7 +2,7 @@
      <div v-for="city in savedCities" :key="city.id">
     <CityCard :city="city" @click="goToCityView(city)" />
     </div>
-    <p  v-if="savedCities.length === 0" style="font-size: large;color: blanchedalmond; font-weight: bold;">
+    <p  v-if="savedCities.length === 0" style="color: blanchedalmond; font-weight: bold; text-align: center;">
       Please, to start tracking a location or city , search in the field above.
   </p>
 </template>

@@ -4,7 +4,7 @@
       <input type="text" placeholder="Search for City or State"
         v-model="searchQuery"
         @input="getSearchResults"
-      class="py-2 px-1 w-full bg-transparent border-b focus:border-weather-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]">
+        class="bg-slate-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       <ul v-bind:class="{ ' bg-red-600':!searchError && mapboxSearchResults.length === 0, 'bg-weather-secondary': mapboxSearchResults }"
         class="absolute  text-white w-full shadow-md py-2 px-1 top-[66px]"
         v-if="mapboxSearchResults"

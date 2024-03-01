@@ -55,7 +55,7 @@
     <div class="max-w-screen-md w-full py-12">
       <div class="mx-8 text-blue-100">
         <h2 class="mb-4 text-center  text-2xl text-gradient">Hourly Weather</h2>
-        <div class="flex gap-10 overflow-x-scroll" style="padding-bottom: 3rem;">
+        <div class="flex gap overflow-x-scroll" style="padding-bottom: 3rem;">
 
           <div
           v-for="hourData in weatherData.hourly"
@@ -90,12 +90,12 @@
     <hr class="border-white border-opacity-25 border w-full" />
 <!-- Weekly Weather -->
 <div class="max-w-screen-md w-full py-12">
-  <div class="mx-8 text-blue-100 ">
+  <div class="mx-8 text-blue-100  " style="border-radius: 30px;">
       <h2 class="mb-4  text-center text-2xl text-gradient">7 Day Forecast</h2>
       <div
         v-for="day in weatherData.daily"
         :key="day.dt"
-        class="flex items-center hazar">
+        class="flex items-center hazar mx-4">
 
         <p class="flex-1">
           {{
@@ -108,19 +108,49 @@
           }}
         </p>
         <img
-          class="w-[50px] h-[50px] object-cover"
+          class="w-[50px] h-[50px] object-cover "
           :src="
             `http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`
           "
           alt=""
         />
-        <div class="flex gap-2 flex-1 justify-end ">
-          <p>H : {{ Math.round(day.temp.max) }}&deg;C</p>
-          <p>L : {{ Math.round(day.temp.min) }}&deg;C</p>
-        </div>
+        <div class="flex gap-2 flex-1 justify-end">
+         <div class="temperature-container">
+          <p class="temperature">{{ Math.round(day.temp.min) }}&deg;</p>
+
+      <div class="container  mx-3 h-2.5 bg-gradient-to-r from-green-400 via-yellow-300 to-orange-600 rounded-full overflow-hidden dark:bg-blue-500">
+      <div class="container justify-center rounded-full overflow-hidden bg-orange-600 text-center whitespace-nowrap transition duration-500 " ></div>
+      </div>
+        <p class="temperature">{{ Math.round(day.temp.max) }}&deg;</p>
+         </div>
+      </div>
       </div>
   </div>
 </div>
+
+<hr class="border-white border-opacity-25 border w-full" />  
+
+<div class="container mt-3 mb-3">
+    <GMapMap
+      :center="{ lat: weatherData.lat, lng: weatherData.lon }"
+      :zoom="8" 
+      map-type-id="roadmap" 
+      style="width: 100%; height: 30vh ; border-radius: 10px;"
+      :options="{
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true,
+        streetViewControl: true,
+        rotateControl: true,
+        fullscreenControl: true
+      }"
+    >
+    <GMapMarker
+    :position="{ lat: weatherData.lat, lng: weatherData.lon }"
+    :title="route.params.city"  
+  />
+</GMapMap>
+  </div>
 
 <div v-if="!route.query.preview"
     class="flex items-center gap-2 py-12 text-white cursor-pointer duration-150 hover:text-red-600"
@@ -135,7 +165,19 @@
 <script setup>
 
 import axios from "axios";
+import {ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
+
+
+// var isSmallScreen = false;
+//     if (window.matchMedia("(max-width: 640px)").matches) {
+//       isSmallScreen = true;
+//     }
+//     else{
+//       isSmallScreen = false
+//     }
+//     console.log(isSmallScreen)
+//     var zoomLevel = isSmallScreen ? 20 : 10;
 
 const route = useRoute();
 
@@ -205,11 +247,17 @@ router.push({
 }
 
 .overflow-x-scroll::-webkit-scrollbar-track {
-  background:#feb47b; 
+  background:antiquewhite;
+  border-radius: 40px;
 }
 
 .overflow-x-scroll::-webkit-scrollbar-thumb {
-  background: #888;
+  background: linear-gradient(to right, #762006, #feb47b);
+  border-radius: 40px;
+}
+
+.flex .overflow-x-scroll{
+  gap: 2.5rem;
 }
 
 @media only screen and (max-width: 640px) {
@@ -259,7 +307,23 @@ router.push({
   width: 35px; 
     height: 35px;
 }
-
+.flex .overflow-x-scroll{
+  gap: 1.5rem;
 }
 
+  .temperature-container { 
+    width:90px;
+    display: flex;
+    align-items: center;
+}
+}
+
+.temperature-container {
+    display: flex;
+    align-items: center;
+}
+
+.temperature {
+    margin: 0;
+}
 </style>
